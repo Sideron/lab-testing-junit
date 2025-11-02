@@ -46,10 +46,36 @@ public class TestGB {
     public void libroNull(){
         Assert.assertFalse(gb.estaDisponible(null));
     }
-    // Categoria Lector
+    // Agrwegar Libro
     @Test
     public void agregarLibroNull(){
         Assert.assertFalse(gb.agregarLibro(null));
     }
-
+    @Test
+    public void agregarLibroDuplicado(){
+        gb.agregarLibro("Harry Potter");
+        Assert.assertFalse(gb.agregarLibro("Harry Potter"));
+    }
+    // CDategoria Lector
+    @Test
+    public void lectorPrincipiante(){
+        Assert.assertEquals("Principiante",gb.obtenerCategoriaLector(0));
+    }
+    @Test
+    public void lectorIntermedio(){
+        Assert.assertEquals("Intermedio",gb.obtenerCategoriaLector(5));
+    }
+    @Test
+    public void lectorAvanzado(){
+        Assert.assertEquals("Avanzado",gb.obtenerCategoriaLector(25));
+    }
+    // Obtener libros disponibles
+    @Test
+    public void nuncaEsNulo(){
+        Assert.assertNotNull(gb.obtenerLibrosDisponibles());
+    }
+    @Test
+    public void listaVacia() {
+        Assert.assertTrue(gb.obtenerLibrosDisponibles().isEmpty());
+    }
 }
