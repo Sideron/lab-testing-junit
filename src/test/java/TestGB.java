@@ -35,7 +35,21 @@ public class TestGB {
     // Esta disponible
     @Test
     public void libroNoDisponible() {
-        Assert.assertNotNull(gb.obtenerLibrosDisponibles());
+        Assert.assertFalse(gb.estaDisponible("Harry Potter"));
+    }
+    @Test
+    public void libroDisponible(){
+        gb.agregarLibro("Harry Potter");
+        Assert.assertTrue(gb.estaDisponible("Harry Potter"));
+    }
+    @Test
+    public void libroNull(){
+        Assert.assertFalse(gb.estaDisponible(null));
+    }
+    // Categoria Lector
+    @Test
+    public void agregarLibroNull(){
+        Assert.assertFalse(gb.agregarLibro(null));
     }
 
 }
